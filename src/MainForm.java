@@ -94,7 +94,7 @@ public class MainForm extends JFrame {
                     A.setVisible(true);
                     A.pack();
                 } else {
-                    showMessage("Внимание", "Ни одна запись не выбрана", JOptionPane.WARNING_MESSAGE);
+                    showMessage("Внимание", "Ни одна запись не выбрана!", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
