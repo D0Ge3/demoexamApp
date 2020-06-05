@@ -23,7 +23,7 @@ public class Login extends JFrame {
     private JLabel passwordLabel;
     private final int WIDTH = 400, HEIGHT = 300;
     private DBFramework DB;
-    private Font font;
+    //private Font font;
     Login () {
         setContentPane(mainpanel);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -31,22 +31,22 @@ public class Login extends JFrame {
                 (Toolkit.getDefaultToolkit().getScreenSize().height/2)-HEIGHT/2);
         setTitle("Вход в систему");
         setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
-        try {
-            font = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream(new File("fonts/Comfortaa-Regular.ttf"))).deriveFont(Font.PLAIN, 12);
-        } catch (FontFormatException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            font = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream(new File("fonts/Comfortaa-Regular.ttf"))).deriveFont(Font.PLAIN, 12);
+//        } catch (FontFormatException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         DB = new DBFramework();
 
-        login.setFont(font);
-        loginLabel.setFont(font);
-        passwordLabel.setFont(font);
-        password.setFont(font);
-        ok.setFont(font);
-        exit.setFont(font);
+//        login.setFont(font);
+//        loginLabel.setFont(font);
+//        passwordLabel.setFont(font);
+//        password.setFont(font);
+//        ok.setFont(font);
+//        exit.setFont(font);
 
         ok.addActionListener(new ActionListener() {
             @Override
@@ -58,7 +58,7 @@ public class Login extends JFrame {
                             while (result.next()) {
                                 if (login.getText().equals(result.getString("login")) && password.getText().equals(result.getString("password"))) {
                                     //showMessage("Отлично", "Тут должно быть новое окно...", JOptionPane.WARNING_MESSAGE);
-                                    MainForm F = new MainForm(600,500, "Склад", font);
+                                    MainForm F = new MainForm(600,500, "Склад");
                                     F.setVisible(true);
                                     F.pack();
                                     dispose();
@@ -90,6 +90,22 @@ public class Login extends JFrame {
         JOptionPane.showMessageDialog(this, message, title, type);
     }
     public static void main(String[] args) {
+
+        try {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream(new File("fonts/Comfortaa-Regular.ttf"))).deriveFont(Font.PLAIN, 12);
+            UIManager.put("TextField.font", font);
+            UIManager.put("Button.font", font);
+            UIManager.put("Label.font", font);
+            UIManager.put("ComboBox.font", font);
+            UIManager.put("Table.font", font);
+            UIManager.put("TitleBar.font", font);
+            UIManager.put("TableHeader.font", font);
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         Login L = new Login();
         L.pack();
         L.setVisible(true);

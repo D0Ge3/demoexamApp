@@ -20,7 +20,7 @@ public class MainForm extends JFrame {
     private DBFramework DB;
     private Font font;
 
-    MainForm(int width, int height, String title, Font font) {
+    MainForm(int width, int height, String title) {
         setContentPane(mainpanel);
         setPreferredSize(new Dimension(width, height));
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width/2)-width/2,
@@ -35,13 +35,13 @@ public class MainForm extends JFrame {
 
 
         dataTable.setModel(model);
-        dataTable.setFont(font);
+//        dataTable.setFont(font);
 
         DB = new DBFramework();
-        this.font = font;
-        add.setFont(font);
-        delete.setFont(font);
-        edit.setFont(font);
+        //this.font = font;
+//        add.setFont(font);
+//        delete.setFont(font);
+//        edit.setFont(font);
 
         if (DB.initConnection("jdbc:mysql://localhost:3306/usersdatabase?serverTimezone=UTC", "root", "1234")==0) {
             ResultSet result = DB.selectQuery("SELECT * FROM product");
@@ -61,7 +61,7 @@ public class MainForm extends JFrame {
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddProduct A = new AddProduct(300, 600, "Добавить товар", null, false, font);
+                AddProduct A = new AddProduct(300, 600, "Добавить товар", null, false);
                 A.setModel(model);
                 A.setVisible(true);
                 A.pack();
@@ -89,7 +89,7 @@ public class MainForm extends JFrame {
                     product.setTitle(model.getValueAt(dataTable.getSelectedRow(), 1) + "");
                     product.setPrice(Integer.parseInt(model.getValueAt(dataTable.getSelectedRow(), 2) + ""));
 
-                    AddProduct A = new AddProduct(300, 600, "Редактировать товар", product, true, font);
+                    AddProduct A = new AddProduct(300, 600, "Редактировать товар", product, true);
                     A.setModel(model);
                     A.setVisible(true);
                     A.pack();

@@ -25,26 +25,26 @@ public class AddProduct extends JFrame {
     private boolean isEditor;
     private Font font;
 
-    AddProduct(int width, int height, String title, Product product, boolean isEditor, Font font) {
+    AddProduct(int width, int height, String title, Product product, boolean isEditor) {
         setContentPane(mainpanel);
         setPreferredSize(new Dimension(width, height));
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width/2)-width/2,
                 (Toolkit.getDefaultToolkit().getScreenSize().height/2)-height/2);
         setTitle(title);
         setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
-        save.setFont(font);
-        exit.setFont(font);
-        textID.setFont(font);
-        textPrice.setFont(font);
-        textTitle.setFont(font);
-        idLabel.setFont(font);
-        nameLabel.setFont(font);
-        priceLabel.setFont(font);
+//        save.setFont(font);
+//        exit.setFont(font);
+//        textID.setFont(font);
+//        textPrice.setFont(font);
+//        textTitle.setFont(font);
+//        idLabel.setFont(font);
+//        nameLabel.setFont(font);
+//        priceLabel.setFont(font);
 
         DB = new DBFramework();
         this.product = product;
         this.isEditor = isEditor;
-        this.font = font;
+//        this.font = font;
 
         if (product != null) {
             textID.setText(product.getId()+"");
